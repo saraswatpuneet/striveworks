@@ -12,20 +12,23 @@ func longestFragment(S string) int {
 	var currentLength int
 	var currentChar byte
 	var prevChar byte
+	// if N is less than 1 or greater than 100000, return 0
+	if len(S) < 1 || len(S) > 100000 {
+		return 0
+	}
 	isPalin := isPalindrome(S)
 	// if string is palindrome, cut it in half and check if both halves are palindromes
 	if isPalin {
 		// if length is even then cut in half
-		cutLength := 0
-		if len(S)%2 == 0 {
-			cutLength = len(S) / 2
-		} else {
-			cutLength = len(S)/2
-		}
+		cutLength := len(S) / 2
 		S = S[:cutLength]
 	}
 	for i := 0; i < len(S); i++ {
 		currentChar = S[i]
+		// current character should only be a or b
+		if currentChar != 'a' && currentChar != 'b' && currentChar != '?' {
+			return 0
+		}
 		if currentChar == '?' {
 			if currentLength > maxLength {
 				maxLength = currentLength
@@ -47,11 +50,6 @@ func longestFragment(S string) int {
 		maxLength++
 	}
 	return maxLength
-}
-
-func main() {
-	S := "??b??"
-	println(longestFragment(S))
 }
 
 func isPalindrome(s string) bool {
