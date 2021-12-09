@@ -16,6 +16,8 @@ func FindTotalInversionsInArray(A []int) int {
 	if count > 1000000000 {
 		return -1
 	}
+
+	return count
 }
 
 func findInversions(A []int, start, end int) int {
