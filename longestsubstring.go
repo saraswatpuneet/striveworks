@@ -1,5 +1,5 @@
 package main
-
+///
 // find longest substring with repeating characters
 // special case: given string is a palindrome
 func longestSubstring(s string) int {
